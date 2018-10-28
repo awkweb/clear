@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { navigateTo } from 'gatsby-link'
+import { navigate } from 'gatsby-link'
 
 import Layout from '../components/layout'
 
@@ -9,6 +9,8 @@ const encode = data =>
     .join('&')
 
 export default class IndexPage extends Component {
+  state = {}
+
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value })
   }
@@ -24,21 +26,19 @@ export default class IndexPage extends Component {
         ...this.state,
       }),
     })
-      .then(() => navigateTo(form.getAttribute('action')))
+      .then(() => navigate(form.getAttribute('action')))
       .catch(error => alert(error))
   }
 
   render() {
     return (
       <Layout>
-        <h1>A form</h1>
         <form
           name="signup"
           method="post"
           action="/thanks/"
           data-netlify="true"
           data-netlify-honeypot="bot-field"
-          onSubmit={this.handleSubmit}
         >
           {/* The `form-name` hidden field is required to support form submissions without JavaScript */}
           <input type="hidden" name="form-name" value="signup" />
@@ -50,20 +50,15 @@ export default class IndexPage extends Component {
           </p>
           <p>
             <label>
-              Name
-              <br />
-              <input type="text" name="name" onChange={this.handleChange} />
-            </label>
-          </p>
-          <p>
-            <label>
               Phone number
               <br />
               <input type="tel" name="phone" onChange={this.handleChange} />
             </label>
           </p>
           <p>
-            <button type="submit">Sign Up</button>
+            <button disabled={!this.state.phone} type="submit">
+              Sign Up
+            </button>
           </p>
         </form>
       </Layout>
