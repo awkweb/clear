@@ -1,0 +1,58 @@
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+html {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  font-family: sans-serif;
+  background-color: #fff;
+  box-sizing: border-box;
+  font: {
+    family: sans-serif;
+    size: 18px;
+  }
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  color: hsla(0, 0%, 0%, 0.8);
+  font-feature-settings: 'kern', 'liga', 'clig', 'calt';
+  margin: 0;
+}
+
+#app {
+  margin: {
+    bottom: auto;
+    left: auto;
+    right: auto;
+    top: 0;
+  }
+  max-width: 960px;
+  padding-top: 0;
+}
+
+input {
+  font-size: 1rem;
+  height: 2rem;
+}
+
+button {
+  background-color: #000;
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+  font: {
+    size: 0.8rem;
+    weight: 700;
+  }
+  height: 2rem;
+  padding: {
+    bottom: 0;
+    left: 1rem;
+    right: 1rem;
+    top: 0;
+  }
+}

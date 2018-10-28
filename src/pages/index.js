@@ -1,12 +1,6 @@
 import React, { Component } from 'react'
-import { navigate } from 'gatsby-link'
 
 import Layout from '../components/layout'
-
-const encode = data =>
-  Object.keys(data)
-    .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
-    .join('&')
 
 export default class IndexPage extends Component {
   state = {}
@@ -15,24 +9,10 @@ export default class IndexPage extends Component {
     this.setState({ [e.target.name]: e.target.value })
   }
 
-  handleSubmit = e => {
-    e.preventDefault()
-    const form = e.target
-    fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode({
-        'form-name': form.getAttribute('name'),
-        ...this.state,
-      }),
-    })
-      .then(() => navigate(form.getAttribute('action')))
-      .catch(error => alert(error))
-  }
-
   render() {
     return (
       <Layout>
+        <h1>Clear</h1>
         <form
           name="signup"
           method="post"
@@ -50,13 +30,13 @@ export default class IndexPage extends Component {
           </p>
           <p>
             <label>
-              Phone number
+              Email
               <br />
-              <input type="tel" name="phone" onChange={this.handleChange} />
+              <input type="email" name="email" onChange={this.handleChange} />
             </label>
           </p>
           <p>
-            <button disabled={!this.state.phone} type="submit">
+            <button disabled={!this.state.email} type="submit">
               Sign Up
             </button>
           </p>
