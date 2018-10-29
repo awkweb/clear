@@ -1,46 +1,29 @@
 import React, { Component } from 'react'
 
 import Layout from '../components/layout'
+import Card from '../components/card'
+import SignUp from '../components/signup'
 
 export default class IndexPage extends Component {
-  state = {}
-
-  handleChange = e => {
-    this.setState({ [e.target.name]: e.target.value })
-  }
-
   render() {
     return (
       <Layout>
-        <h1>Clear</h1>
-        <form
-          name="signup"
-          method="post"
-          action="/thanks/"
-          data-netlify="true"
-          data-netlify-honeypot="bot-field"
-        >
-          {/* The `form-name` hidden field is required to support form submissions without JavaScript */}
-          <input type="hidden" name="form-name" value="signup" />
-          <p hidden>
-            <label>
-              Don’t fill this out:{' '}
-              <input name="bot-field" onChange={this.handleChange} />
-            </label>
-          </p>
-          <p>
-            <label>
-              Email
-              <br />
-              <input type="email" name="email" onChange={this.handleChange} />
-            </label>
-          </p>
-          <p>
-            <button disabled={!this.state.email} type="submit">
-              Sign Up
-            </button>
-          </p>
-        </form>
+        <Card />
+        <div id="content">
+          <h1>Clear is a credit card designed for you.</h1>
+          <ul>
+            <li>
+              <strong>$15k limit.</strong> Just show us your offer letter.
+            </li>
+            <li>
+              <strong>AI-powered rewards.</strong> Zero fees.
+            </li>
+            <li>
+              <strong>Contactless.</strong> Tap to pay – that's it.
+            </li>
+          </ul>
+          <SignUp />
+        </div>
       </Layout>
     )
   }
